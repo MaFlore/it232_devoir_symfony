@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FilmController!{% endblock %}
+
+{% block body %}
+<hr>
+    <h5 style="text-align:center;"> BIENVENUE Monsieur {{app.user.nom}} {{app.user.prenom}}! ✅</h5>
+	 <p class="mt-4 text-sm text-center">
+                <a href="{{url("deconnexion")}}" class="text-primary text-gradient font-weight-bold">Se déconnecter</a>
+    </p> 
+    <h4 style="text-align:center; text-decoration:bold">LISTE DES FILMS</h4>
+		<br><a class="btn btn-success" href="{{url("ajouter_film")}}">Ajouter un nouveau film</a>
+	</div>
+
+	<hr>
+	<div class="example-wrapper">
+		<table class="table">
+			<thead class="table-primary">
+				<tr>
+					<th style="text-align:center">Numero</th>
+					<th style="text-align:center">Nom Film</th>
+					<th style="text-align:center">Auteur Film</th>
+					<th style="text-align:center">Producteur Film</th>
+					<th style="text-align:center">Date de production</th>
+					<th style="text-align:center">Date de publication</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for film in films %}
+					<tr>
+
+						<td style="text-align:center">{{loop.index}}</td>
+						<td style="text-align:center">{{film.nomFilm}}</td>
+						<td style="text-align:center">{{film.auteurFilm}}</td>
+						<td style="text-align:center">{{film.producteurFilm}}</td>
+						<td style="text-align:center">{{film.dateDeProduction|date('d-m-Y')}}</td>
+						<td style="text-align:center">{{film.dateDePublication|date('d-m-Y')}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+
+	</div>
+{% endblock %}
